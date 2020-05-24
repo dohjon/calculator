@@ -27,8 +27,6 @@ npm test
 
 ## Usage
 
-
-
 ```js
 // link bin to path 
 npm link
