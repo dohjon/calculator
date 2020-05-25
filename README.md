@@ -27,9 +27,50 @@ npm test
 
 ## Usage
 
+Docker support
+```bash
+// Step 1. change code
+...
+```
+```bash
+// Step 2. build
+docker build -t calculator:latest .
+```
+
+```bash
+// Step 3. run
+
+// arguments
+docker run \
+    --rm \
+    -it \
+    --workdir /usr/src/app \
+    --volume $(pwd):/usr/src/app \
+    --init \
+    calculator:latest x add 3 print x
+
+// interactive
+docker run \
+    --rm \
+    -it \
+    --workdir /usr/src/app \
+    --volume $(pwd):/usr/src/app \
+    --init \
+    calculator:latest
+
+// file
+docker run \
+    --rm \
+    -it \
+    --workdir /usr/src/app \
+    --volume $(pwd):/usr/src/app \
+    --init \
+    calculator:latest test.txt
+```
+
 ```js
 // link bin to path 
-npm link
+sudo npm link
 
 // or use path
 $ lib/calculator.js
@@ -142,7 +183,7 @@ function division(a, b) {
 
 Add **handler** to **operations** in `operations.js`
 ```
-export const operations = {
+const operations = {
   division: division,
   ...
 };
@@ -150,7 +191,7 @@ export const operations = {
 
 Add **name** of handler to **operation** in `parser/rules.js`
 ```
-export const operation = `^division$`;
+const operation = `^division$`;
 ```
 
 
