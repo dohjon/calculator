@@ -77,14 +77,6 @@ export function parseOperation(tokens) {
     return node;
   }
 
-  // previous token <register>
-  // next token <value>
-  if (isToken(previousToken, register) && isToken(nextToken, value)) {
-    const node = createNode(tokens.consume(), OPERATION, []);
-    node.children.push(parseRegister(tokens));
-    return node;
-  }
-
   // invalid token
   return parseInvalid(tokens);
 }
